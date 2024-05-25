@@ -26,8 +26,6 @@ _\* You can try with `NVIDIA_DRIVER_CAPABILITIES="compute,video,utility"` if you
 - `4455`: For OBS websocket server connections
 - `5901`: For VNC connections
 
-_\*I suggest you map it to 80 at docker run with `-p 80:6901` so you can just visit `obs.local` on your browser. See [run instructions](#running-the-container) below._
-
 ## Volumes
 
 - `/config`: Stores OBS Studio configuration data persistently
@@ -39,14 +37,14 @@ _\*I suggest you map it to 80 at docker run with `-p 80:6901` so you can just vi
 To start a container:
 
 ```bash
-docker run -d -p 80:6901 -p 5901:5901 -p 4455:4455 --env VNC_PASSWD=<your password> ghcr.io/nachoaivarez/obs-ndi
+docker run -d -p 6901:6901 -p 5901:5901 -p 4455:4455 --env VNC_PASSWD=<your password> ghcr.io/nachoaivarez/obs-ndi
 ```
 
 _Note: Replace `<your password>` with your desired VNC password. If you leave it empty it will default to `headless`_
 
 ### Accessing OBS Studio
 
-1. **Via Browser**: Go to `http://obs.local`
+1. **Via Browser**: Go to `http://obs.local:6901`
 1. **Via VNC**: Connect using `vnc://obs.local:5901`
 
 ## Credits and resources
